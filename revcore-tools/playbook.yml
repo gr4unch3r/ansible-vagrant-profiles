@@ -1,0 +1,4 @@
+---
+- hosts: all
+  roles:
+    - gr4unch3r.revcore_tools
