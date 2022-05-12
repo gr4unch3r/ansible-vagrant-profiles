@@ -1,6 +1,7 @@
 # Ansible Vagrant Profiles
 
 
+
 ## Available VMs/Environments
 
 - ```revcore-tools``` - Windows malware analysis/reversing core tools
@@ -8,7 +9,7 @@
 
 ## License
 
-![GitHub](https://img.shields.io/github/license/gr4unch3r/ansible-vagrant-profiles)
+MIT
 
 ## Author Information
 

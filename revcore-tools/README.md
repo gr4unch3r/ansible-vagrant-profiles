@@ -7,6 +7,7 @@ This Vagrant profile installs [SentinelOne RevCore Tools](https://github.com/Sen
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 - [Vagrant](https://www.vagrantup.com/downloads.html)
 - [Ansible](http://docs.ansible.com/ansible/latest/intro_installation.html)
+- [pywinrm](https://github.com/diyan/pywinrm)
 
 ## Getting Started
 

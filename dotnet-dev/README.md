@@ -7,6 +7,7 @@ This Vagrant profile installs a .NET development environment, following Microsof
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 - [Vagrant](https://www.vagrantup.com/downloads.html)
 - [Ansible](http://docs.ansible.com/ansible/latest/intro_installation.html)
+- [pywinrm](https://github.com/diyan/pywinrm)
 
 ## Getting Started
 
