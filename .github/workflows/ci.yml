@@ -29,6 +29,7 @@ jobs:
 
   test_revcore:
     name: test-revcore-tools
+    needs: test_dotnet
     runs-on: macos-10.15
     env:
       OBJC_DISABLE_INITIALIZE_FORK_SAFETY: YES
@@ -52,6 +53,7 @@ jobs:
 
   test_cuckoo:
     name: test-cuckoo-sandbox
+    needs: test_revcore
     runs-on: macos-10.15
     env:
       OBJC_DISABLE_INITIALIZE_FORK_SAFETY: YES
