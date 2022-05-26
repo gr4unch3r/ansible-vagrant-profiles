@@ -1,0 +1,5 @@
+---
+- hosts: all
+  gather_facts: false
+  roles:
+    - gr4unch3r.cuckoo_host

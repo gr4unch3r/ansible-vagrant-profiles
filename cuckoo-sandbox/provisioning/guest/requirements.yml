@@ -1,0 +1,8 @@
+---
+roles: 
+  - src: gr4unch3r.cuckoo_guest
+
+collections:
+  - ansible.windows
+  - community.windows
+  - chocolatey.chocolatey
