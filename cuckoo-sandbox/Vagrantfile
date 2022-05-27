@@ -2,6 +2,25 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
+    config.vm.define "host" do |cfg|
+      cfg.vm.box = "gr4unch3r/ubuntu-xenial"
+      cfg.vm.hostname = "host"
+      cfg.vm.network :private_network, ip: "192.168.56.100", gateway: "192.168.56.1", dns: "8.8.8.8"
+      cfg.vm.provider "virtualbox" do |v, override|
+        v.gui = false
+        v.name = "host"
+        v.memory = 2048
+        v.cpus = 2
+        v.customize ["modifyvm", :id, "--vram", "32"]
+        v.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
+        v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
+        v.customize ["setextradata", "global", "GUI/SuppressMessages", "all" ]
+      end
+      cfg.vm.provision "ansible" do |ansible|
+        ansible.playbook = "./provisioning/host/playbook.yml"
+        ansible.galaxy_role_file = "./provisioning/host/requirements.yml"
+      end
+    end
     config.vm.define "guest" do |cfg|
       cfg.vm.box = "gr4unch3r/windows-10"
       cfg.vm.box_version = "10.0.17134"
@@ -21,25 +40,6 @@ Vagrant.configure("2") do |config|
         ansible.playbook = "./provisioning/guest/playbook.yml"
         ansible.galaxy_role_file = "./provisioning/guest/requirements.yml"
         ansible.inventory_path = "./provisioning/guest/inventory"
-      end
-    end
-    config.vm.define "host" do |cfg|
-      cfg.vm.box = "gr4unch3r/ubuntu-xenial"
-      cfg.vm.hostname = "host"
-      cfg.vm.network :private_network, ip: "192.168.56.100", gateway: "192.168.56.1", dns: "8.8.8.8"
-      cfg.vm.provider "virtualbox" do |v, override|
-        v.gui = false
-        v.name = "host"
-        v.memory = 2048
-        v.cpus = 2
-        v.customize ["modifyvm", :id, "--vram", "32"]
-        v.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
-        v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
-        v.customize ["setextradata", "global", "GUI/SuppressMessages", "all" ]
-      end
-      cfg.vm.provision "ansible" do |ansible|
-        ansible.playbook = "./provisioning/host/playbook.yml"
-        ansible.galaxy_role_file = "./provisioning/host/requirements.yml"
       end
     end
   end
