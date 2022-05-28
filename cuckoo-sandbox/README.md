@@ -18,7 +18,7 @@ $ cd ansible-vagrant-profiles/cuckoo-sandbox
 $ vagrant up
 ```
 
-- Cuckoo web interface: `http://192.168.56.100:8080`
+- Cuckoo web interface: http://192.168.56.100:8080
 - Username/password: `vagrant:vagrant`
 
 ## Author Information
