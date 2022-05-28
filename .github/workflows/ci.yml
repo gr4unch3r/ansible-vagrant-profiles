@@ -67,6 +67,9 @@ jobs:
       - name: Install Ansible
         run: python3 -m pip install ansible pywinrm
 
+      - name: Install vagrant-reload plugin
+        run: vagrant plugin install vagrant-reload
+
       - name: Test cuckoo-sandbox
         run: vagrant up
         working-directory: cuckoo-sandbox
