@@ -53,7 +53,7 @@ jobs:
 
   test_cuckoo:
     name: test-cuckoo-sandbox
-    needs: test_revcore
+    needs: test_lab
     runs-on: macos-10.15
     env:
       OBJC_DISABLE_INITIALIZE_FORK_SAFETY: YES
