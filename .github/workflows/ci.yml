@@ -4,32 +4,8 @@ name: CI
 on: push
 
 jobs:
-  test_dotnet:
-    name: test-dotnet-dev
-    runs-on: macos-10.15
-    env:
-      OBJC_DISABLE_INITIALIZE_FORK_SAFETY: YES
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Upgrade Pip
-        run: python3 -m pip install --upgrade pip
-
-      - name: Install Ansible
-        run: python3 -m pip install ansible pywinrm
-
-      - name: Test dotnet-dev
-        run: vagrant up
-        working-directory: dotnet-dev
-
-      - name: Destroy Vagrant box
-        run: vagrant destroy -f
-        working-directory: dotnet-dev
-
   test_lab:
     name: test-malware-lab
-    needs: test_dotnet
     runs-on: macos-10.15
     env:
       OBJC_DISABLE_INITIALIZE_FORK_SAFETY: YES
@@ -53,7 +29,6 @@ jobs:
 
   test_cuckoo:
     name: test-cuckoo-sandbox
-    needs: test_lab
     runs-on: macos-10.15
     env:
       OBJC_DISABLE_INITIALIZE_FORK_SAFETY: YES
@@ -74,35 +49,11 @@ jobs:
       - name: Destroy Vagrant box
         run: vagrant destroy -f
         working-directory: cuckoo-sandbox
-
-  test_kicksecure:
-    name: test-kicksecure
-    needs: test_cuckoo
-    runs-on: macos-10.15
-    env:
-      OBJC_DISABLE_INITIALIZE_FORK_SAFETY: YES
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Upgrade Pip
-        run: python3 -m pip install --upgrade pip
-
-      - name: Install Ansible
-        run: python3 -m pip install ansible
-
-      - name: Test kicksecure
-        run: vagrant up
-        working-directory: kicksecure
-
-      - name: Destroy Vagrant box
-        run: vagrant destroy -f
-        working-directory: kicksecure
   
   build:
     name: jira-issue
     runs-on: ubuntu-latest
-    needs: [test_dotnet, test_lab, test_cuckoo, test_kicksecure]
+    needs: [test_lab, test_cuckoo]
     steps:
       - name: Jira login
         uses: atlassian/gajira-login@master
