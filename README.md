@@ -11,6 +11,14 @@ This repo contains a collection of virtual machines for various use cases. The V
 - `dotnet-dev` - Windows .NET developer box
 - `kicksecure` - Secure operating system
 
+## Quick-start
+
+```
+$ git clone https://github.com/gr4unch3r/ansible-vagrant-examples.git
+$ cd ansible-vagrant-examples/<box-dir>
+$ vagrant up
+```
+
 ## License
 
 MIT
