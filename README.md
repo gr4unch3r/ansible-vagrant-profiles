@@ -9,6 +9,7 @@ This repo contains a collection of virtual machines for various use cases. The V
 - `malware-lab` - Malware analysis lab environment
 - `cuckoo-sandbox` - Automated malware analysis system
 - `dotnet-dev` - Windows .NET developer box
+- `kicksecure` - Secure operating system
 
 ## License
 
