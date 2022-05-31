@@ -11,6 +11,12 @@ This repo contains a collection of virtual machines for various use cases. The V
 - `dotnet-dev` - Windows .NET developer box
 - `kicksecure` - Secure operating system
 
+## Requirements
+
+- [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+- [Vagrant](https://www.vagrantup.com/downloads.html)
+- [Ansible](http://docs.ansible.com/ansible/latest/intro_installation.html)
+
 ## Quick-start
 
 ```
