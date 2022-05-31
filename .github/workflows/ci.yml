@@ -27,8 +27,8 @@ jobs:
         run: vagrant destroy -f
         working-directory: dotnet-dev
 
-  test_revcore:
-    name: test-revcore-tools
+  test_lab:
+    name: test-malware-lab
     needs: test_dotnet
     runs-on: macos-10.15
     env:
@@ -43,13 +43,13 @@ jobs:
       - name: Install Ansible
         run: python3 -m pip install ansible pywinrm
 
-      - name: Test revcore-tools
+      - name: Test malware-lab
         run: vagrant up
-        working-directory: revcore-tools
+        working-directory: malware-lab
 
       - name: Destroy Vagrant box
         run: vagrant destroy -f
-        working-directory: revcore-tools
+        working-directory: malware-lab
 
   test_cuckoo:
     name: test-cuckoo-sandbox
@@ -67,9 +67,6 @@ jobs:
       - name: Install Ansible
         run: python3 -m pip install ansible pywinrm
 
-      - name: Install vagrant-reload plugin
-        run: vagrant plugin install vagrant-reload
-
       - name: Test cuckoo-sandbox
         run: vagrant up
         working-directory: cuckoo-sandbox
@@ -81,7 +78,7 @@ jobs:
   build:
     name: jira-issue
     runs-on: ubuntu-latest
-    needs: [test_dotnet, test_revcore, test_cuckoo]
+    needs: [test_dotnet, test_lab, test_cuckoo]
     steps:
       - name: Jira login
         uses: atlassian/gajira-login@master

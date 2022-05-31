@@ -6,7 +6,6 @@ This Vagrant profile installs [Cuckoo Sandbox](https://cuckoosandbox.org/) using
 
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 - [Vagrant](https://www.vagrantup.com/downloads.html)
-- [vagrant-reload](https://github.com/aidanns/vagrant-reload)
 - [Ansible](http://docs.ansible.com/ansible/latest/intro_installation.html)
 - [pywinrm](https://github.com/diyan/pywinrm)
 
